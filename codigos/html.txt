@@ -1,0 +1,6 @@
+<div class="form-group">
+      <label>paises</label>
+      <select name="pais" id="pais" formControlName="pais" class="form-control">
+        <option value="item.id" *ngFor="let item of paises">{{item.nombre}}</option>
+      </select>
+    </div>

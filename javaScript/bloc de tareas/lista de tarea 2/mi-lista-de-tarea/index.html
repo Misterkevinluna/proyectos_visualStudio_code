@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--NOTA: al parecer esta fuente de google-fonts (o en general todas las fuentes de google-font) no necesita el 
+    rel="preload" ya que google trae la fuente ya precargada-->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;900&display=swap" 
+    crossorigin="crossorigin" as="font">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;900&display=swap" rel="stylesheet">
+    
+    <link rel="Preload" href="./css/styles.css" as="style">
+    <link rel="stylesheet" href="./css/styles.css">
+    
+    <!-- esta es otra forma de llamar a un archivo javascript en caso de no querer agregarlo en el body -->
+    <!-- para doder agregarlo desde el header este debe de cumplir con las estructura que se muestra 
+    ya no vasta con colocar el simple <script src="./js/script.js"></script> que se colocaba en el body del html,
+    en esta nueva estructura añadimos un type="text/javascript" y defer -->
+    <script src="./js/script.js" type="text/javascript" defer></script>
+
+    <title>Lista de Tareas</title>
+</head>
+<body>
+    <div class="list roundBorder">
+        <div clsss="date">
+            <div class="dateLeft">
+                <div id="dateNumber"></div>
+                <div>
+                    <div id="dateMonth"></div>
+                    <div id="dateYear"></div>
+                </div>
+            </div>
+            <div id="dateText"></div>
+        </div>
+        <form onsubmit="addNewTask(event)">
+            <input type="text" class="roundBorder" name="taskText" autocomplete="off" placeholder="Nueva tarea">
+            <button type="submit" class="addTaskButton">+</button>
+            <button type="button" class="orderButton roundBorder" onclick="renderOrderedTasks()">Ordenar</button>
+        </form>
+        <div id="tasksContainer"></div>
+    </div>
+</body>
+</html> 
