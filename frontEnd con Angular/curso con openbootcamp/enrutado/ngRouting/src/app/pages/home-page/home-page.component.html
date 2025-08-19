@@ -1,0 +1,8 @@
+<h1>Home Page</h1>
+<h3>¡Bienvenido!</h3>
+
+<!-- Hacer un Login -->
+<a routerLink="/login">Iniciar Sesión en Login</a> 
+
+<button (click)="navegarAContacts()">Ver tus contactos</button>
+<button *ngIf="token" (click)="logout()">Logout</button>

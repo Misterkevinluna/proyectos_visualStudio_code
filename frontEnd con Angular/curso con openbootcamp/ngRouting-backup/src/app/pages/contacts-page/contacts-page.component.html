@@ -1,0 +1,9 @@
+<h1>Tus Contactos:</h1>
+
+<!-- Listar los contactos y poder navegar al pinchar en uno de ellos al detalle -->
+<div *ngFor="let contacto of listaContactos; let i=index">
+    <div routerLink="{{contacto.id}}"><!-- sin el slach(/) al principio de la ruta la ruta se concatena
+        con la ruta del componente y con el slach al principio se dirije al componente asociado a dicha ruta-->
+        <h6>Nombre: {{ contacto.nombre }}</h6>
+    </div>
+</div>
