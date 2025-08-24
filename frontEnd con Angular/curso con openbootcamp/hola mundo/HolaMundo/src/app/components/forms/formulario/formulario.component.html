@@ -1,0 +1,17 @@
+<!-- Formlario Reactivo Básico -->
+<form [formGroup]="miFormulario"><!-- El [formGroup] debe de coincidir con la variable del grupo la cual es miFormulario el cual es de tipo FormGroup -->
+
+    <!-- Previsualización de los valores del formulario -->
+    <h2>Datos en Vivo del Formulario:</h2>
+    <!-- Usaremos un pipe de algular de tipo Json para pasar el objeto a un Json y mostrarlo -->
+    <p>{{ miFormulario.value | json }}</p>
+
+    <!-- Campos del Formulario -->
+    <!-- el formControlName debe de hacer ferencia a los atributos o campos del formulario -->
+    <input matInput placeholder="Nombre" formControlName="nombre">
+    <input matInput placeholder="Apellidos" formControlName="apellidos">
+    <input matInput placeholder="Email" formControlName="email">
+    <input matInput placeholder="Telefono" formControlName="telefono">
+    <input matInput placeholder="Direccion" formControlName="direccion">
+    
+</form>

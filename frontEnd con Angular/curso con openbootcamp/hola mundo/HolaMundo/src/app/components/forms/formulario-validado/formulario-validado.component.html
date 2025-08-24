@@ -1,0 +1,70 @@
+<form [formGroup]="miFormularioValidado" (submit)="enviarFormulario()">
+
+    <h3>Datos en vivo del formulario:</h3>
+    <p>{{ miFormularioValidado.value | json }}</p>
+
+
+    <!-- Campo del formulario + Mensaje de Error por validación -->
+    <!-- NOMBRE -->
+    <input placeholder="Nombre" formControlName="nombre">
+    <div *ngIf="nombre?.errors?.['required']  && nombre?.touched"><!-- con la linea nombre?.errors?.['required'] estamos indicando que si el error que surge en el campo-atributo 'nombre'
+        es de tipo 'required' que es por dejar en campo nulo o no ingresar nada en el y nombre?.touched valida cuando entras en el campo y sales de el dejandolo nulo o vacio-->
+        <p [ngStyle]="{color: 'tomato'}">El campo Nombre es Oblogatorio</p>
+    </div>
+    <!-- APELLIDOS -->
+    <input placeholder="Apellidos" formControlName="apellidos">
+
+    <!-- EDAD -->
+    <input type="number"  placeholder="Edad" formControlName="edad">
+    <div *ngIf="edad?.errors?.['min']  && edad?.touched"><!-- con la linea edad?.errors?.['min'] validamos que el error sea por un valor minimo establecido en el controlador el cual el
+        valor es 18 -->
+        <p [ngStyle]="{color: 'tomato'}">
+            El campo Edad no puede ser inferior a 18. No puedes registrarte con {{ edad?.errors?.['min'].actual }} años
+        </p>
+    </div>
+    <div *ngIf="edad?.errors?.['max']  && edad?.touched"><!-- con la linea edad?.errors?.['max'] validamos que el error sea por un valor maximo establecido en el controlador el cual el
+        valor es de 99, si el valor ingresado es mayor a 99 lanza el error -->
+        <p [ngStyle]="{color: 'tomato'}">
+            El campo Edad no puede ser superior a 99. No puedes registrarte con {{ edad?.errors?.['max'].actual }} años
+        </p>
+    </div>
+
+    <!-- EMAIL -->
+    <input type="email"  placeholder="Email" formControlName="email">
+    <div *ngIf="email?.errors?.['required']  && email?.touched">
+        <p [ngStyle]="{color: 'tomato'}">
+            El campo Email es oblogatorio
+        </p>
+    </div>
+    <div *ngIf="email?.errors?.['email']  && email?.touched">
+        <p [ngStyle]="{color: 'tomato'}">
+            El formato de Email no es valido
+        </p>
+    </div>
+
+    <!-- PASSWORD -->
+    <input type="password"  placeholder="Password" formControlName="password">
+    <div *ngIf="password?.errors?.['required']  && password?.touched">
+        <p [ngStyle]="{color: 'tomato'}">
+            El campo Password es oblogatorio
+        </p>
+    </div>
+    <div *ngIf="password?.errors?.['pattern']  && password?.touched"><!-- con la linea password?.errors?.['pattern'] validamos que el error sea por el patron que se establecio para las
+        contraseñas, este hace referencia al patron que se establecio usando las expreciones regulares [a-zA-Z]* que se establecieron en el controlador -->
+        <p [ngStyle]="{color: 'tomato'}">
+            El Formato no es válido
+        </p>
+    </div>
+
+    <!-- ACEPTA -->
+    <input type="checkbox"  formControlName="acepta">
+    <div *ngIf="acepta?.errors?.['requiredTrue']  && acepta?.touched">
+        <p [ngStyle]="{color: 'tomato'}">
+            Debe de aceptar los terminos
+        </p>
+    </div>
+
+    <!--Botón de Submit que se activa solo cuando el formulario es valido -->
+    <button type="submit" [disabled]="miFormularioValidado.invalid">Enviar</button>
+
+</form>

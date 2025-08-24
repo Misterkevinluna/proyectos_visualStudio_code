@@ -1,0 +1,17 @@
+<h1>!Hola, {{ nombre }}!</h1> 
+<!-- ngClass sin corchetes para valores literales o valor directo.
+[ngClass] con corchetes para valores de propiedades o expresiones del controlador
+-->
+<h3 [ngClass]="nombre == 'Luna' ? 'colorSaludo' : 'colorNeutro'" id="usuario"  [innerText]="nombre">
+    <!-- No indicamos nada en las etiquetas, sino que el valor viene definido por la propiedad -->
+</h3>
+
+<h5 [ngStyle]="misEstilos">
+    Adios, muy buenas!.
+</h5>
+
+<button id="emit-alerta" (click)="enviarMensajeAlPadre()">Enviar mensaje de saludo al componente padre</button>
+
+<!-- Hacer uso del componente ListaBasica del módulo Listas -->
+ <app-lista-basica></app-lista-basica>
+
