@@ -10,3 +10,5 @@
 # npm install express: para instalar express.
 
 # Para ejecutar el proyecto en modo desarrollador ejecute "npm run dev"
+
+# npm i ejs: para instalar el motor de vistas.

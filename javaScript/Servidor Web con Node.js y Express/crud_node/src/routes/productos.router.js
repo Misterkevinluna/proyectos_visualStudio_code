@@ -1,22 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const querystring = require("querystring");//querystring me permite traer los datos que vienen a traves de query o tambien conocidos como queryParams
+const controller = require("../controllers/productos.controller");
 
-router.get("/", (req, res) => {
-    console.log(req.query);
-    const query = querystring.stringify(req.query);
-    console.log(query);
-    fetch('https://fakestoreapi.com/products?' + query)
-        .then(response => response.json())
-        .then(productos => res.json(productos));
-});
+router.get("/", controller.index);
 
-router.get("/:id", (req, res) => {
-    fetch('https://fakestoreapi.com/products/' + req.params.id)
-        .then(response =>response.json())
-        .then(producto => res.json(producto));
-});
+router.get("/:id", controller.show);
 
 /*
 importamos a router como un modulo para poder ser usado por fuera, lo que se está exportando son las rutas definidad dentro de este modulo.
