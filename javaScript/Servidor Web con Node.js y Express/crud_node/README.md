@@ -12,3 +12,5 @@
 # Para ejecutar el proyecto en modo desarrollador ejecute "npm run dev"
 
 # npm i ejs: para instalar el motor de vistas.
+
+# npm install nodemailer : Es un modulo que nos permite a travez de unos metodos, enviar correos electronicos.
