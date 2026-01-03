@@ -1,0 +1,37 @@
+<h1>Listado de Categorías</h1>
+
+<a href="/categorias/create">Crear una Categoría</a>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% categorias.forEach(categoria => { %>
+            <tr>
+                <td><a href="/categorias/<%= categoria.id %>"><%= categoria.nombre %></a></td>
+                <td>
+                    <a href="/categorias/<%= categoria.id %>/edit">Edit</a>
+                    <form class="form-delete" action="/categorias/<%= categoria.id %>?_method=DELETE" method="post">
+                        <button type="submit">Borrar</button>
+                    </form>
+                </td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>
+<script>
+    document.addEventListener("submit", (event) => {
+        console.log("entyra");
+
+        if (event.target.classList.contains("form-delete")) {
+            if (confirm("¿Estas seguro?")) {
+                event.target.submit();
+                event.defaultPrevented();
+            }
+        }
+    });
+</script>
