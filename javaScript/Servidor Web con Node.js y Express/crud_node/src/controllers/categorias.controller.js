@@ -1,14 +1,33 @@
-const categorias = [
-    { id: 1, nombre: "Categoria 1" },
-    { id: 2, nombre: "Categoria 2" },
-    { id: 3, nombre: "Categoria 3" },
-];
+const fs = require('fs');
+const path = require('path');
 
-const index = (req, res) => {
-    res.render("categorias/index", {categorias});
+let categorias = [];
+
+const index = (req, res) => { 
+    try {
+        const filePath = path.resolve(__dirname, '../../categorias.json');
+        //Si el archivo NO existe → créalo con un array vacío
+        if (!fs.existsSync(filePath)) {
+            fs.writeFileSync(filePath, JSON.stringify([]));
+        } else {
+            //Si existe, léelo
+            const contenido =  fs.readFileSync(filePath, 'utf-8');
+            //Si está vacío → inicialízalo
+            if (contenido.trim() === '') {
+                fs.writeFileSync(filePath, JSON.stringify([]));
+            } else {
+                categorias = JSON.parse(contenido);
+            }
+        }
+    } catch (error) {
+        categorias = [];
+    }
+
+    res.render("categorias/index", { categorias })
 }
 
 const show = (req, res) => {
+    categorias = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../categorias.json'), 'utf-8'));
     const { id } = req.params;
 
     const categoria =  categorias.find((categoria) => categoria.id == id);
@@ -27,10 +46,20 @@ const create = (req, res) => {
 }
 
 const store = (req, res) => {
-    const { nombre } = req.body;
     // const ultimaCategoria = categorias[categorias.length - 1];Otra forma
-    const ultimaCategoria = categorias.at(-1);
-    const idNuevaCategoria = ultimaCategoria.id + 1;
+    let ultimaCategoria = undefined;
+    let idNuevaCategoria = undefined;
+    const { nombre } = req.body;
+    categorias = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../categorias.json'), 'utf-8'));
+    if (categorias.length === 0) {
+        idNuevaCategoria = 1;
+    }else{
+        ultimaCategoria = categorias.at(-1);
+        idNuevaCategoria = ultimaCategoria.id + 1;
+    }
+ 
+    // const ultimaCategoria = categorias.at(-1);
+    // const idNuevaCategoria = ultimaCategoria.id + 1;
     const categoria = {
         id: idNuevaCategoria,
         nombre
@@ -38,10 +67,14 @@ const store = (req, res) => {
 
     //Añadiendo un nuevo registro o categoria al array categorias
     categorias.push(categoria);
+
+    fs.writeFileSync(path.resolve(__dirname, '../../categorias.json'), JSON.stringify(categorias));
+
     res.redirect("/categorias");
 }
 
 const edit = (req, res) => {
+    categorias = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../categorias.json'), 'utf-8'));
     const { id } = req.params;
 
     const categoria =  categorias.find((categoria) => categoria.id == id);
@@ -54,6 +87,7 @@ const edit = (req, res) => {
 }
 
 const update = (req, res) => {
+    categorias = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../categorias.json'), 'utf-8'));
     const { id } = req.params;
     const { nombre } = req.body;
     const categoria =  categorias.find((categoria) => categoria.id == id);
@@ -64,10 +98,12 @@ const update = (req, res) => {
     }
 
     categoria.nombre = nombre;
+    fs.writeFileSync(path.resolve(__dirname, '../../categorias.json'), JSON.stringify(categorias));
     res.redirect("/categorias");
 };
 
 const destroy = (req, res) => {
+    categorias = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../categorias.json'), 'utf-8'));
     const { id } = req.params;
     //Se usa findIndex para traer el indice de un valor dentro de un array, en este caso traemos en indice del registro que tenga el id igual al que se le esta pasando
     const index =  categorias.findIndex((categoria) => categoria.id == id);
@@ -77,8 +113,8 @@ const destroy = (req, res) => {
     }
     // splice se usa para borrar un registro dentro de un array, el primer parametro que recibe es el indice de donde comienza a borrar y el segundo es la cantidad de registros a borrar a partir del registro con el indice del primer parametro que le estamos pasando.
     categorias.splice(index, 1);
+    fs.writeFileSync(path.resolve(__dirname, '../../categorias.json'), JSON.stringify(categorias));
     res.redirect('/categorias');
-
 }
 
 module.exports ={
