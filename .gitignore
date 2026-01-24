@@ -1,5 +1,4 @@
 # Carpetas que NO deben ir a Git
-proyectos de udemy/
 node_modules/
 dist/
 
