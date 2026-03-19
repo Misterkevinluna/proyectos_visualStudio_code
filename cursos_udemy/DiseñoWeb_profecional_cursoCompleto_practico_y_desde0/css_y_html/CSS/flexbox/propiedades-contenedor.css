@@ -1,0 +1,77 @@
+@font-face {
+    font-family: "RobotoSlab";
+    src: url("../../fuentes/RobotoSlab-Bold.ttf") format("truetype");
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'RobotoSlab', sans-serif;
+    background: white;
+}
+
+.caja{
+    background: blue;
+    color: white;
+    padding: 40px;
+    font-size: 24px;
+    border-radius: 5px;
+}
+
+.contenedor{
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+    border: 4px solid black;
+    padding: 30px;
+    display: flex;
+    /* gap le agrega es espaciado al elemento sin colocarle un espacio al ultimo elemento. Si le colocas dos valores
+    (gap: 10px 40px) el primer valor es para el espaciado de arriba y abajo y el segundo para lo de los lados*/
+    gap: 40px; 
+
+    /*Valor 'row' para ubicarlos en fila de izquierda a derecha
+    Valor 'row-reverse' para ubicarlos en una fila de derecha a izquierda 
+    Valor 'colunm' para ubicarlos como una columna de arriba hacia abajo
+    Valor 'colunm-reverse' para ubicarlos como una columna de abajo hacia arriba*/
+    /* flex-direction: row; */
+
+    /*Valor 'wrap' para que se vallan ubicando los elementos del contenedor hacia abajo en caso que no quepan todos dentro de este
+    , para que no se vean los elementos sobresaliendo por fuera de su contenedor, el ultimo elemento lo va ubicando hacia abajo
+    Valor 'wrap-reverse' hace lo mismo pero los ultimos elementos lo va ubicando hacia arriba.
+    Valor 'nowrap' hace referencia a quitar el estilo de wrap*/
+    /* flex-wrap: nowrap; */
+
+    /*Valor 'start' alinea los elementos al inicio del lado izquierdo.
+    Valor 'end' alinea los elementos al inicio del lado derecho.
+    Valor 'center' alinea los elementos en el centro.
+    Valor 'space-between' alinea y disdribuye el espacio que tiene dentro del contenedor entre los ementos con el mismo espacio 
+    de separación entre ellos y con un espacio pequeño al final de cada elemento.
+    Valor 'space-around' alinea y disdribuye el espacio que tiene dentro del contenedor entre los ementos con el mismo espacio 
+    de separación entre ellos y la mitad del espacio que usa entre los elementos es el que usa para los espacios al inicio y final de cada elemento.
+    Valor 'space-evenly' alinea y disdribuye el espacio que tiene dentro del contenedor entre los ementos con el mismo espacio 
+    de separación entre ellos y el espacio que usa entre los elementos es el que usa para los espacios al inicio y final de cada elemento.*/
+    /* justify-content: space-between; */
+    /* flex-direction: column; */
+    height: 90vh;
+    /*Los valores de align-items y para lo que sirve align-items es para alinear los elementos en una de las posiciones verticalmente.
+    Valor: 'stretch' estira los elementos para que abarquen todo el alto del contenedor.
+    Valor: 'start' los elementos se alinien en la parte de arriba.
+    Valor: 'end' los elementos se alinien en la parte de abajo.
+    Valor: 'center' los elementos se alinien en el centro.*/
+    /* align-items: center;
+    justify-content: center; */
+
+    /*align-content Nos permite cambiar el alineado de los elementos cuando estos ocupan multiples lineas.
+    Por ejemplo cuando tienen flex-wrap: wrap
+    
+    Valores:
+    start | center | end | space-between | space-around*/
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+

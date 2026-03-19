@@ -1,0 +1,35 @@
+@font-face {
+    font-family: "RobotoSlab";
+    src: url("../../fuentes/RobotoSlab-Bold.ttf") format("truetype");
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'RobotoSlab', sans-serif;
+    background: white;
+    display: flex;
+    justify-content: center;
+} 
+
+.contenedor-principal{
+    width: 90%;
+    max-width: 800px;
+    margin-top: 40px;
+} 
+
+.grid{
+    border: 2px solid #000;
+}
+
+.caja{
+    background: #fff;
+    border: 1px solid #000;
+    padding: 40px;
+    font-size: 24px;
+    text-align: center;
+}

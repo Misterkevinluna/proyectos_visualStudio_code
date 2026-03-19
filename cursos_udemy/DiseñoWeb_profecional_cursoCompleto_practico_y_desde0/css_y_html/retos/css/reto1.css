@@ -1,0 +1,207 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('../../fuentes/Roboto-Medium.ttf') format('truetype');
+}
+
+
+html, body {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.content{
+    width: 100%;
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.botonCuadrado,
+.botonRedondo,
+.botonOutline,
+.botonGradiente,
+.botonSombra,
+.botonIcono,
+.botonEnlace
+{
+    padding: 10px 15px 10px 15px;
+}
+
+.botonCuadrado,
+.botonRedondo,
+.botonOutline,
+.botonGradiente,
+.botonSombra,
+.botonIcono
+{
+    margin-right: 20px;
+    border: 0px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+.botonCuadrado,
+.botonRedondo,
+.botonGradiente,
+.botonSombra
+{
+    color: white;
+}
+
+.botonCuadrado{
+    background-color:indigo;
+
+    &:hover{
+        background-color:rgb(96, 45, 132);
+    }
+}
+
+.botonRedondo{
+    border-radius: 100px;
+    background-color: coral;
+    &:hover{box-shadow: 0px 0px 30px 5px rgb(188, 188, 188);}
+}
+
+.botonOutline{
+    color: black;
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 5px;
+
+    &:hover{
+        background-color: black;
+        color: white;
+    }
+}
+
+.botonGradiente {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: black;
+    
+
+    /* Gradiente normal */
+    &::before, &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 5px;
+        transition: opacity 0.4s ease;
+        z-index: 0;
+    }
+
+    /* Estado normal */
+    &::before {
+        background: linear-gradient(
+            360deg,
+            rgba(179, 179, 179, 1) 0%,
+            rgba(235, 235, 235, 1) 50%,
+            rgba(43, 43, 43, 1) 100%
+        );
+        opacity: 1;
+    }
+
+    /* Estado invertido */
+    &::after{
+        background: linear-gradient(
+            360deg,
+            rgba(43, 43, 43, 1) 0%,
+            rgba(235, 235, 235, 1) 50%,
+            rgba(179, 179, 179, 1) 100%
+        );
+        opacity: 0;
+    }
+
+    /* Hover */
+    &:hover::after {
+        opacity: 1;
+    }
+    &:hover::before {
+        opacity: 0;
+    }
+
+    /* Texto encima del gradiente */
+    span {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+.botonSombra{
+    background-color:forestgreen;
+    box-shadow: 7px 6px 0 0 darkgreen;
+    transition: box-shadow 0.2s ease;
+    &:hover{
+        box-shadow: 5px 4px 0 0 darkgreen;
+    }
+}
+
+.botonIcono{
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: black;
+    display: flex;
+    align-items: center;      /* centra verticalmente */
+    justify-content: center;  /* centra horizontalmente */
+    gap: 8px; 
+    
+    svg {
+        position: relative;
+        z-index: 1;
+        color: black;   /* fuerza el color */
+    }
+
+    /* Gradiente normal */
+    &::before, &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 5px;
+        transition: opacity 0.4s ease;
+        z-index: 0;
+    }
+
+    /* Estado normal */
+    &::before {
+        background: linear-gradient(360deg, rgba(255, 213, 122, 1) 0%, rgba(255, 192, 56, 1) 100%);
+        opacity: 1;
+    }
+
+    /* Estado invertido */
+    &::after{
+        background: linear-gradient(360deg, rgba(255, 192, 56, 1) 0%, rgba(255, 213, 122, 1) 100%);
+        opacity: 0;
+    }
+
+    /* Hover */
+    &:hover::after {
+        opacity: 1;
+    }
+    &:hover::before {
+        opacity: 0;
+    }
+
+    /* Texto encima del gradiente */
+    span {
+        position: relative;
+        z-index: 1;
+    }
+
+}
+
+.botonEnlace{
+    text-decoration: none;
+    border-radius: 5px;
+    &:hover{background-color: rgb(203, 148, 255);}
+}

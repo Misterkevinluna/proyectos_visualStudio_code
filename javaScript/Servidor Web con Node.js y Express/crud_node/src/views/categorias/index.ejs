@@ -13,7 +13,7 @@
         <tbody>
             <% categorias.forEach(categoria => { %>
                 <tr>
-                    <td><a href="/categorias/<%= categoria.id %>"><%= categoria.nombre %></a></td>
+                    <td><a href="/categorias/<%= categoria.id %>"><%= categoria.name %></a></td>
                     <td class="cell-inline">
                         <a class="button button--primary" href="/categorias/<%= categoria.id %>/edit">Edit</a>
                         <form class="form-delete" action="/categorias/<%= categoria.id %>?_method=DELETE" method="post">

@@ -1,6 +1,7 @@
 # Carpetas que NO deben ir a Git
 node_modules/
 dist/
+recursos_de_los_cursos/
 
 # Archivos grandes
 *.zip

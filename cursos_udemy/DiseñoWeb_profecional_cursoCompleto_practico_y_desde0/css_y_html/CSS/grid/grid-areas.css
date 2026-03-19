@@ -1,0 +1,29 @@
+.grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    padding: 20px;
+    gap: 20px;
+    grid-template-areas: 
+        'header     header     header     header'
+        'body       body       body       sidebar'
+        'body       body       body       sidebar'
+        'footer     footer     footer     footer'
+    ;
+
+    .header{
+        grid-area: header;
+    }
+
+    .body{
+        grid-area: body;
+    }
+
+    .sidebar{
+        grid-area: sidebar;
+    }
+
+    .footer{
+        grid-area: footer;
+    }
+}

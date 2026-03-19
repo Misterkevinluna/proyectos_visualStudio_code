@@ -1,0 +1,102 @@
+@font-face {
+    font-family: "RobotoSlab";
+    src: url("../Fonts/RobotoSlab-Bold.ttf") format("truetype");
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100%;
+    font-family: 'RobotoSlab', sans-serif;
+    background-image: url("../img/montañaConNieve.jpg");
+    background-size: cover; /* Para que se ajuste a la pantalla perfectamente */
+    background-position: top; /* Sube un poco la imagen */
+
+    &::after{
+        content: '';
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.5);
+        position: absolute;
+        top: 0;
+        left: 0;
+        backdrop-filter: blur(20px);
+        z-index: 0;
+    }
+}
+
+.contenedor{
+    position: relative;
+    z-index: 1;
+    width: 90%;
+    max-width: 700px;
+    margin: auto;
+    padding: 40px 0;
+
+    .bio{
+        text-align: center;
+
+        .foto{
+            width: 150px;
+            height: auto;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 100%;
+            margin-bottom: 20px;
+        }
+
+        .nombre{
+            margin-bottom: 5px;
+        }
+
+        .descripcion{
+            font-size: 18px;
+            margin-bottom: 1rem;
+        }
+    }
+
+    .links{
+        .link{
+            color: black;
+            border: 3px solid black;
+            border-radius: 10px;
+            text-align: center;
+            display: block;
+            margin-bottom: 20px;
+            text-decoration: none;
+            text-transform: uppercase;
+            padding: 20px;
+            font-weight: 700;
+            transition: 0.2s ease all;/*El 'all' hace referencia a todos los elementos con la clase link*/
+            /*aparincia de se sombra gruesa*/
+            box-shadow: 1px 1px 0px 0px black, 2px 2px 0px 0px black, 3px 3px 0px 0px black, 4px 4px 0px 0px black,
+            5px 5px 0px 0px black;
+            /*Efecto del boton undiendoce*/
+            transform: translate(-5px, -5px);/*Se traslada 5px a la izquierda y 5px arriba*/
+
+            &:hover{
+                color: white;
+                box-shadow: 0px 0px 0px 0px;
+                /*Efecto del boton undiendoce*/
+                transform: translate(0px, 0px);/*Se traslada a su pocicion original*/
+            }
+
+            &.facebook:hover{
+                background: blue;
+            }
+
+            &.instagram:hover{
+                background: #833AB4;
+                background: linear-gradient(90deg,rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+            }
+
+            &.youtube:hover{
+                background: rgb(209, 0, 0);
+            }
+        }
+    }
+}

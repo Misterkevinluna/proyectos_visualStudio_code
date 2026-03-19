@@ -1,0 +1,27 @@
+h1, h2, h3, h4, h5, h6{
+    color: red;
+}
+
+main p{
+    font-size: 20px;
+}
+
+main p a{
+    color: blue;
+    font-size: 26px;
+}
+
+/* Selector de  clases */
+
+.enlace{
+    color: red;
+}
+
+header .enlace{
+    font-size: 22px;
+}
+
+/* Selector de id */
+.especial{
+    color: darkblue;
+}

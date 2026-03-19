@@ -1,0 +1,12 @@
+.contenedor-principal{
+    max-width: none;
+}
+
+.grid{
+    display: grid;
+    gap: 20px;
+    padding: 20px;
+    /*auto-fill: acomoda los alementos dentro del grid en caso que no quepan 
+    y auto-fit: si queda espacio lo que hace es redistribuir el espacio entre los elementos que hay*/
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}

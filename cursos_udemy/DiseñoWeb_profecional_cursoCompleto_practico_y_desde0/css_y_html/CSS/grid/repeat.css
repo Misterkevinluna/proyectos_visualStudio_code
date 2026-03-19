@@ -1,0 +1,6 @@
+.grid{
+    display: grid;
+    /* grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(5, 1fr); */
+    grid-template-rows: auto repeat(4, 1fr) 200px;
+}

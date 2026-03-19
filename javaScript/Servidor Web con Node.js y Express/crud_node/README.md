@@ -17,3 +17,6 @@
 
 #  npm i method-override
 Es un modulo quet te permite poder usar los demas methodos de peticion fuera de los comunes GET Y POST.
+
+# $ npm i sqlite3
+Para instalar sqlite3

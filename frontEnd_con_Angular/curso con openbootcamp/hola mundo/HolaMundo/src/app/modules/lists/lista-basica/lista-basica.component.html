@@ -1,0 +1,97 @@
+<!-- BLOQUE DE DIRECTIVAS DE ATRIBUTOS -->
+
+<p [ngStyle]="{color: 'tomato', fontWeight: 'bolder'}">Lista de elementos:</p>
+
+<p ngClass="underLined">Aqui vamos a iterar sobre una lista y mostrar varios elementos</p>
+
+<p [ngClass]="['underLined', 'small']">Aún no tienes elementos en la lista</p>
+
+<p [ngClass]="{underLined: false, small: true}">Te recomendamos crear un elemento</p>
+
+<!-- BLOQUE DE DIRECTIVAS ESTRUCTURALES -->
+
+<!-- 
+<p *ngIf="cargando">
+    Cargando...
+</p>
+-->
+<button (click)="cambiarCargando()">{{ cargando? 'Terminar Carga' : 'Iniciar Carga' }}</button>
+<!-- La siguiente sintaxsis se declara y autocompleta colocando el siguiente escrit 'ng-If-else'
+ para que te salga el autocompletado o recomendacion debes de instalar la extencion (Angular 17 Snippets - TypeScript, Html, Angular Material, ngRx, RxJS & Flex Layout  v17.0.4 )-->
+<!-- La sintxis comienza desde aquí -->
+ <ng-container *ngIf="!cargando; else templateEspera">
+    <p>¡Todo Listo!</p>
+</ng-container>
+<ng-template #templateEspera>
+    <p>Cargando...</p>
+    <p>Espere a que Termine el Proceso</p>
+</ng-template>
+<!-- Termina acá -->
+
+
+<!-- BLOQUE PARA EXPLICAR EL USO DE NGFOR -->
+
+<!-- Iteramos en la lista de productos -->
+ <div *ngFor="let producto of listaElementos; let i = index; let esPar = even">
+<!--
+*ngFor es una directiva estructural que repite ese bloque de HTML una vez por cada elemento de listaElementos.
+
+Dentro de *ngFor, puedes crear variables locales especiales para cada iteración, además del propio elemento (producto en tu ejemplo).
+
+let i = index ➔ Le estás diciendo: crea una variable i que sea igual al índice actual en el bucle.
+
+index es una palabra reservada en ngFor, es decir, Angular te la da automáticamente. No la defines tú.
+
+El index empieza en 0, como en un for normal.
+
+let esPar = even ➔ Aquí también:
+
+even es otra palabra reservada en ngFor.
+
+Angular también te da automáticamente una variable especial llamada even, que es true o false dependiendo si el índice actual es par (even = par).
+
+Por ejemplo, si el índice es 0, 2, 4, entonces even = true.
+
+Si es 1, 3, 5, entonces even = false.
+
+Es decir: en cada vuelta del ciclo, Angular te da más información útil: no solo el elemento (producto), sino también en qué posición estás (index) y si esa posición es par o no (even).
+-->
+    <!-- Ámbito de FOR donde tenemos acceso a "producto" -->
+    <div [ngStyle]="esPar?{backgroundColor: 'blue', color: 'white'} : {backgroundColor: 'green', color: 'white'}" class="producto">
+        <p>{{ i }}</p>
+        <p>{{ producto.nombre }} - {{ producto.precio }}</p>
+        <p>{{ producto.descripcion }}</p>
+    </div>
+ </div>
+
+
+ <!-- BLOQUE PARA ENTENDER NGSWITCH -->
+
+<div [ngSwitch]="opcion"><!--esta bariable "opcion" se refiere a la misma de lista-basica.component.ts-->
+    <p *ngSwitchCase="1">Has escojido la Opcion 1</p>
+    <p *ngSwitchCase="2">Has escojido la Opcion 2</p>
+    <p *ngSwitchCase="3">Has escojido la Opcion 3</p>
+    <p *ngSwitchCase="4">Has escojido la Opcion 4</p>
+    <p *ngSwitchDefault class="cerrar"></p>
+</div>
+<!-- Seleccion de opcion para el usuario -->
+ <div>
+    <input type="radio" name='opcion' (click)="escogerOpcion(1)">Opcion 1
+    <input type="radio" name='opcion' (click)="escogerOpcion(2)">Opcion 2
+    <input type="radio" name='opcion' (click)="escogerOpcion(3)">Opcion 3
+    <input type="radio" name='opcion' (click)="escogerOpcion(4)">Opcion 4
+    <input type="radio" selected="selected" name='opcion' (click)="escogerOpcion(0)">Ocultar
+ </div>
+
+
+ <!-- Podemos concatener directivas -->
+
+ <p>Productos de mas de 10 USD</p>
+<div *ngFor="let producto of listaElementos; let i = index; let esPar = even">
+    <!-- Ámbito de FOR donde tenemos acceso a "producto" -->
+    <div *ngIf="producto.precio>10" [ngStyle]="esPar?{backgroundColor: 'blue', color: 'white'} : {backgroundColor: 'green', color: 'white'}" class="producto">
+        <p>{{ i }}</p>
+        <p>{{ producto.nombre }} - {{ producto.precio }}</p>
+        <p>{{ producto.descripcion }}</p>
+    </div>
+</div>
