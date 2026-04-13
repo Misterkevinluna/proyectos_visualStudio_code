@@ -45,7 +45,7 @@
           </p>
           <div class="botones">
 
-            <button class="boton transparente">Ver demo
+            <button class="boton transparente" id="btn-video">Ver demo
               <div class="icono">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-circle"
                   viewBox="0 0 16 16">
@@ -88,13 +88,14 @@
               </span>
               +50 Países
             </p>
+            <!-- <button id="cambiar">Cambiar slide</button> -->
           </div>
         </div>
 
         <div class="col-2">
-          <div class="slideshow">
+          <div class="slideshow" id="slideshow">
 
-            <div class="slides">
+            <div class="slides" id="slides">
               <div class="slide">
                 <img src="./public/assets/img/1.png" alt="">
               </div>
@@ -106,7 +107,7 @@
               </div>
             </div>
 
-            <div class="indicadores">
+            <div class="indicadores" id="indicadores">
               <button class="indicador active"></button>
               <button class="indicador"></button>
               <button class="indicador"></button>
@@ -115,7 +116,7 @@
           </div>
         </div>
          
-        <div class="overlay-video">
+        <div class="overlay-video" id="overlay-video">
           <div class="video">
             <iframe src="https://www.youtube.com/embed/O3hW7Fi9IKQ?si=i9oTgfazXxw612yI"
               title="YouTube video player" frameborder="0"
@@ -135,14 +136,14 @@
         <section class="caracteristicas">
           <h2 class="titulo">Características</h2>
           <div class="grid">
-            <div class="previews">
-              <img class="thumb active" src="./public/assets/img/4.png" alt="">
-              <img class="thumb" src="./public/assets/img/5.png" alt="">
-              <img class="thumb" src="./public/assets/img/6.png" alt="">
-              <img class="thumb" src="./public/assets/img/7.png" alt="">
+            <div class="previews" id="previews">
+              <img class="thumb active" src="./public/assets/img/4.png" alt="" data-id="1">
+              <img class="thumb" src="./public/assets/img/5.png" alt="" data-id="2">
+              <img class="thumb" src="./public/assets/img/6.png" alt="" data-id="3">
+              <img class="thumb" src="./public/assets/img/7.png" alt="" data-id="4">
             </div>
-            <div class="tabs">
-              <div class="tab">
+            <div class="tabs" id="tabs">
+              <div class="tab active" data-id="1">
                 <div class="icono">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left"
                     viewBox="0 0 16 16">
@@ -156,7 +157,7 @@
                     omnis deserunt sint neque illo.</p>
                 </div>
               </div>
-              <div class="tab">
+              <div class="tab" data-id="2">
                 <div class="icono">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left"
                     viewBox="0 0 16 16">
@@ -170,7 +171,7 @@
                     omnis deserunt sint neque illo.</p>
                 </div>
               </div>
-              <div class="tab">
+              <div class="tab" data-id="3">
                 <div class="icono">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left"
                     viewBox="0 0 16 16">
@@ -184,7 +185,7 @@
                     omnis deserunt sint neque illo.</p>
                 </div>
               </div>
-              <div class="tab">
+              <div class="tab" data-id="4">
                 <div class="icono">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left"
                     viewBox="0 0 16 16">

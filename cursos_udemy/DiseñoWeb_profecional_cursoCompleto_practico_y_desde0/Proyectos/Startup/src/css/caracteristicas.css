@@ -23,7 +23,7 @@
                 left: 0;
                 opacity: 0;
                 vertical-align: top;
-                transition: 0.5 ease all;
+                transition: 0.5s ease all;
 
                 &.active{
                     opacity: 1;
