@@ -1,0 +1,40 @@
+#Esta es la versión del docker compose, no se refiere a tu app de docker se refiere a la version de este tipo de archivo.
+#esta line hoy en dia ya no es necesaria porque cuando esta configuración se ejecute automaticamente coje la ultima versión por defecto, pero si quires puedes declarar esa linea.
+version: '3'
+
+#Lista de nuestros servición o los servicios que quiero estar corriendo
+services:
+  #De esta forma creamos un contenedor de Mongodb en docker con la imagen que ya tenemos instalada en nuestro docker desktop que le estamos indicando que use en la variable image: mongo:6.0.6
+  mongo-db:
+    #Version de tu imagen de  mongodb que tienes en tu app de docker
+    image: mongo:6.0.6
+    #Esto dice que cuando nuestro docker desktop se levante imediatamente va a levantar esta imagen
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASS}
+    volumes:
+      #De esta forma mapeamos el volumen o base de datos del contenedor a una carpeta local (mongo) en este proyecto, con la intención de que si el volumen del contenedor se borra o pierde tengamos los datos de forma local para que no se pierda nada.
+      #De esta froma le decimos que cree una carpeta con el nombre 'mongo' en al raiz del proyecto y que a ella le pase toda la data e información del volumen del contenedor, se coloca '/data/db' para indicarle de donde se traerá el volumen con su data del contenedor de docker desktop.
+      - ./mongo:/data/db
+    ports:
+      #De esta forma estamos mapeando el puerto 27017 de mi maquina o pc con el puerto 27017 del contenedor de docker
+      - 27017:27017
+
+  #De esta forma creamos un contenedor de PostGresSQL en docker con la imagen que ya tenemos instalada en nuestro docker desktop que le estamos indicando que use en la variable image: posrgres: 15.3
+  postgres-db:
+    #Version de tu imagen de postgresSQL que tienes en tu app de docker
+    image: postgres:15.3
+    #Esto dice que cuando nuestro docker desktop se levante imediatamente va a levantar esta imagen
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      #De esta forma mapeamos el volumen o base de datos del contenedor a una carpeta local (postgres) en este proyecto, con la intención de que si el volumen del contenedor se borra o pierde tengamos los datos de forma local para que no se pierda nada.
+      #De esta froma le decimos que cree una carpeta con el nombre 'postgres' en al raiz del proyecto y que a ella le pase toda la data e información del volumen del contenedor, se coloca '/data/db' para indicarle de donde se traerá el volumen con su data del contenedor de docker desktop.
+      - ./postgres:/var/lib/postgresql/data
+    ports:
+      #De esta forma estamos mapeando el puerto 27017 de mi maquina o pc con el puerto 27017 del contenedor de docker
+      - 5432:5432
