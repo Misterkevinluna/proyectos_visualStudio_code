@@ -3,7 +3,8 @@ import { db } from '../data/db';
 import type { Guitar, CartItem } from '../types';
 
 export const useCart = () => {
-  const initialCart: CartItem[] = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
+  const storedCart = localStorage.getItem('cart');
+  const initialCart: CartItem[] = storedCart ? JSON.parse(storedCart) : [];
 
   const [data] = useState(db);
   const [cart, setCart] = useState(initialCart);
