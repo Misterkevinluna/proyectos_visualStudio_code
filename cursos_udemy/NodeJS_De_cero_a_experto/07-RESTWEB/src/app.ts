@@ -1,3 +1,4 @@
+import { AppRoutes } from "./presentation/routes.js";
 import { Server } from "./presentation/server.js";
 
 (async () => {
@@ -5,5 +6,7 @@ import { Server } from "./presentation/server.js";
 })();
 
 function main() {
-    const server = new Server().start();
+    const server = new Server({
+        routes: AppRoutes.routes
+    }).start();
 };
