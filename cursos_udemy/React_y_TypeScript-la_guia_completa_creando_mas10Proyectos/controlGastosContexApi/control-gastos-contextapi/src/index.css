@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+/*Necesario implementar esto para darle color al espacio que se muestra cuando deslizamos, usando la dependecia de swipeable-list
+En este caso usamos estas clases ya que segun la persona del tutorial estas son las clases que se usa internamente swipeable y de esta forma nos podemos referiri para darle estos estilos*/
+/*** SWIPE LIST OVERRIDES **/
+.swipeable-list-item__leading-actions, 
+.swipeable-list-item__trailing-actions {
+  @apply text-white text-lg uppercase font-bold;
+}
+.swipeable-list-item__leading-actions{
+  @apply bg-blue-600;
+}
+.swipeable-list-item__trailing-actions {
+  @apply bg-pink-600;
+}
+.swipeable-list .swipe-action {
+  @apply flex justify-center items-center
+}
+
